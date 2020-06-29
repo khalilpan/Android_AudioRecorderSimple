@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,7 +42,10 @@ public class MainActivity extends AppCompatActivity {
                 mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 
                 File path= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-                File file=new File(path,"/RecordedAudio.3gp");
+//                File file=new File(path,"/RecordedAudio.3gp");
+                String date = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(Calendar.getInstance().getTime());
+//                System.out.println("========================================="+date);
+                File file=new File(path,"/RecordedAudio_"+date+".3gp");
 
                 mediaRecorder.setOutputFile(file);
                 mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
